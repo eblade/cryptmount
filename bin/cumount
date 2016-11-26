@@ -1,0 +1,6 @@
+#!/bin/bash -x
+
+if [ -z "$*" ]; then echo "You must specify a profile"; fi
+source ${CRYPTMOUNT_PROFILES:-$HOME}/$1
+umount_resource.sh $resource_name $resource_path $(mount | grep /dev/mapper/${resource_name} | cut -d' ' -f3)
+
