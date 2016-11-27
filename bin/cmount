@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 if [ -z "$*" ]; then echo "You must specify a profile"; fi
 source ${CRYPTMOUNT_PROFILES:-$HOME}/$1

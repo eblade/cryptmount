@@ -16,7 +16,6 @@ else
     fi
 fi
 
-read -srp 'Tail: ' tail
 echo "Mounting $resource_name"
 if [[ -b $resource_path ]]; then
     using_loop=0
@@ -28,7 +27,7 @@ else
 fi
 set +x
 sudo echo  # make sure sudo password is cached before pipe
-echo $(supergenpass.sh $resource_name 24)${tail} | sudo cryptsetup -c aes-xts-plain create --allow-discards $resource_name $loopdev
+echo $(supergenpass.sh $resource_name 24) | sudo cryptsetup -c aes-xts-plain create --allow-discards $resource_name $loopdev
 if [[ $? -ne 0 ]]; then
     set -x
     if [[ $using_loop == 1 ]]; then

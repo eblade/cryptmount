@@ -2,5 +2,5 @@
 
 if [ -z "$*" ]; then echo "You must specify a profile"; fi
 source ${CRYPTMOUNT_PROFILES:-$HOME}/$1
-umount_resource.sh $resource_name $resource_path $(mount | grep /dev/mapper/${resource_name} | cut -d' ' -f3)
+umount_resource.sh $RESOURCE_NAME $RESOURCE_PATH $(mount | grep /dev/mapper/${RESOURCE_NAME} | cut -d' ' -f3)
 
