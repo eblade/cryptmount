@@ -4,8 +4,25 @@ cryptmount
 This is basically clean-up and packaging of @bjodah's encrypted mount/umount
 scripts.
 
+# Usage
+
+Mount
+
+```bash
+cmount [profile]
+```
+
+Unmount
+```bash
+cumount [profile]
+```
+
+Both will require you to give your password for sudoing.
+
 # Installation
 
+- Create an encrypted disk with cryptsetup. Run your password through
+  ``supergenpass.sh`` (since that will be used by the mount script).
 - Create a folder where you keep your disk profiles.
 - Add something like this to `.bashrc`
 
