@@ -1,0 +1,5 @@
+#!/bin/bash -x
+
+if [ -z "$*" ]; then echo "You must specify a profile"; fi
+source ${CRYPTMOUNT_PROFILES:-$HOME}/$1
+mount_resource.sh $RESOURCE_NAME $RESOURCE_PATH $MOUNT_POINT "-o compress=lzo,discard" yes  # ,rw,nosuid,nodev,relatime,space_cache
