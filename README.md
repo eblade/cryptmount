@@ -6,6 +6,12 @@ scripts.
 
 # Usage
 
+Setup
+
+```bash
+csetup [profile]
+```
+
 Mount
 
 ```bash
@@ -13,11 +19,12 @@ cmount [profile]
 ```
 
 Unmount
+
 ```bash
 cumount [profile]
 ```
 
-Both will require you to give your password for sudoing.
+All of which will require you to give your password for sudoing.
 
 # Installation
 
@@ -53,3 +60,11 @@ MOUNT_POINT=/run/media/$LOGNAME/seagate
 
 Note that different Linux distros have different media folders. This is for
 Fedora, while Ubuntu would have ``/media/$LOGNAME/seagate``.
+
+Now you can run:
+
+```bash
+csetup seagate
+```
+
+and provide a password for encryption.
