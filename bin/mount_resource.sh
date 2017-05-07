@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 resource_name=$1
 resource_path=$2
@@ -45,6 +45,19 @@ set -x
 if [[ "$run_mkfs" == "yes" ]]; then
     echo "Creating filesystem for $resource_name"
     sudo mkfs.btrfs /dev/mapper/$resource_name
+elif [[ "$run_mkfs" == "stop" ]]; then
+    echo "Created device: /dev/mapper/$resource_name"
+    echo "Repeat for all devices then run:"
+    echo ""
+    echo "   sudo mkfs.btrfs -m raid10 -d raid10 <dev1> ... <devN>"
+    echo ""
+    echo "Then you should be able to mount one of them with:"
+    echo ""
+    echo "   sudo mount $options /dev/mapper/$resource_name $mount_point"
+    exit
+elif [[ "$run_mkfs" == "skip" ]]; then
+    echo "Skip mount"
+    exit
 fi
 
 echo "Mounting $resource_name"

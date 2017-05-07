@@ -24,12 +24,30 @@ Unmount
 cumount [profile]
 ```
 
+Setup with raid
+
+* Create on file for each disk, and run
+
+```bash
+csetupraid [profile]
+```
+
+Then follow the instructions given on how to create a raiden btrfs filesystem and
+finally mount it. After reboot you can do:
+
+```bash
+cmount [profile1] skip
+cmount [profile2] skip
+...
+cmount [profileN]
+```
+The final profile will determine the name of the used mountpoint.
+
+
 All of which will require you to give your password for sudoing.
 
 # Installation
 
-- Create an encrypted disk with cryptsetup. Run your password through
-  ``supergenpass.sh`` (since that will be used by the mount script).
 - Create a folder where you keep your disk profiles.
 - Add something like this to `.bashrc`
 

@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 resource_name=$1
 resource_path=$2
 mount_point=$3
