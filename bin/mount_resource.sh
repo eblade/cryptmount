@@ -42,6 +42,13 @@ if [[ $? -ne 0 ]]; then
 fi
 set -x
 
+if [ "$SCAN_DEVICES" == "1" ]; then
+    sudo btrfs device scan /dev/mapper/$resource_name
+fi
+if [ "$NO_MOUNT" == "1" ]; then
+    exit 0
+fi
+
 if [[ "$run_mkfs" == "yes" ]]; then
     echo "Creating filesystem for $resource_name"
     sudo mkfs.btrfs /dev/mapper/$resource_name

@@ -86,3 +86,32 @@ csetup seagate
 ```
 
 and provide a password for encryption.
+
+# Mounting BTRFS RAID
+
+You'll need to setup up all devices, but only to mount one of them:
+
+```bash
+NO_MOUNT=1 cmount [profile1]
+cmount [profile2]
+```
+
+Or the other way around...
+
+# Restoring BTRFS
+
+If a btrfs partition goes bad, it can hopefully be restored using the following
+procedure:
+
+```bash
+NO_MOUNT=1 cmount [profile1]
+NO_MOUNT=1 cmount [profile2]
+sudo btrfs restore -l /dev/mapper/[profile1]
+sudo mount -o compress=lzo,discard /dev/mapper/[profile1] /run/media/johan/[profile1]
+```
+
+There's also this one, which takes much longer time but probably does more stuff:
+
+```bash
+btrfs rescue chunk-recover /dev/mapper/[profile1]
+```
